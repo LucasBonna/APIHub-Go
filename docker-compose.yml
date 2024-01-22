@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  go-hub:
+    image: local/go-hub:latest
+    container_name: goapi-hub
+    platform: linux/amd64
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - PROCESS_TYPE=api
+    env_file:
+      - ./.env
+    depends_on:
+      - mongodb
+    
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=Bonnaro
+      - MONGO_INITDB_ROOT_PASSWORD=Bonnaro
+    networks:
+      - go-hub-api
+        
+networks:
+  go-hub-api:
