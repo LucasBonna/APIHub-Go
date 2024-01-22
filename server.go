@@ -11,7 +11,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	
-	"config"
+	"github.com/LucasBonna/APIHub-Go/config"
 )
 
 var mongoClient *mongo.Client

@@ -1,4 +1,4 @@
-module APIHub
+module APIHub-Go
 
 go 1.21.6
 
